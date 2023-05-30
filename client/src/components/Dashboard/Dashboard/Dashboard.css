@@ -1,0 +1,22 @@
+.dashboard-container {
+  min-height: calc(
+    100vh - 60px - 40px
+  ); /* Adjust the height for smaller screens */
+  margin-top: 20px; /* Adjust the top margin as needed */
+  margin-bottom: 20px; /* Adjust the bottom margin as needed */
+}
+
+@media (min-width: 992px) {
+  .dashboard-container {
+    min-height: 600px; /* Adjust the height for desktop screens */
+  }
+}
+.sidebar {
+  background-color: #f2f2f2;
+  padding: 20px;
+  width: 15%;
+}
+
+.main-content {
+  padding: 20px;
+}

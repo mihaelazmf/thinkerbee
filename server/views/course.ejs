@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Course Page</title>
+  </head>
+  <body>
+    <h1><%= course.title %></h1>
+    <p><%= course.description %></p>
+    <h2>Modules</h2>
+    <ul>
+      <% course.modules.forEach((module) => { %>
+      <li><%= module.title %></li>
+      <% }); %>
+    </ul>
+  </body>
+</html>

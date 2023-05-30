@@ -1,0 +1,29 @@
+.card {
+  background-color: #fff7d6; /* Light yellow background */
+  border-radius: 10px;
+}
+
+.card-title {
+  font-size: 24px;
+  color: #ffc107; /* Bee logo color */
+}
+
+.card-text {
+  font-size: 16px;
+  color: #555555;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary {
+  background-color: #ffc107; /* Bee logo color */
+  border-color: #ffc107;
+}
+
+.btn-primary:hover {
+  background-color: #ffd54f; /* Lighter shade of bee logo color */
+  border-color: #ffd54f;
+}

@@ -1,0 +1,28 @@
+.teacher-dashboard {
+  flex-grow: 1;
+  background-color: var(--primary-color);
+}
+
+.dashboard-section {
+  margin-bottom: 20px;
+}
+
+.dashboard-heading {
+  color: var(--secondary-color);
+}
+
+.button {
+  background-color: var(--secondary-color);
+  color: white;
+}
+.parent-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.teacher-dashboard {
+  flex-grow: 1;
+  padding-bottom: 50px; /* Adjust this value based on your footer's height */
+  overflow-y: auto;
+}

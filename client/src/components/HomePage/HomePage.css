@@ -1,0 +1,65 @@
+body {
+  font-family: "Indie Flower", sans-serif;
+}
+.home-page {
+  text-align: center;
+}
+
+.card-group-container {
+  margin-top: 20px;
+}
+
+.latest-news-container {
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.latest-news-container h4 {
+  margin-bottom: 10px;
+}
+
+.list-group {
+  margin-top: 10px;
+}
+
+.testimonials-container {
+  float: left;
+  width: calc(100% - 20px);
+  margin-right: 20px;
+}
+.contact-form-container {
+  margin: 0 auto;
+  max-width: 500px;
+  width: 100%;
+}
+
+.contact-form-header {
+  text-align: center;
+}
+
+.contact-form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+}
+
+.form-control {
+  width: 100%;
+}
+
+.form-button {
+  align-self: flex-start;
+}

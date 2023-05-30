@@ -1,0 +1,90 @@
+.course-detail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.course-detail-content {
+  width: 60%;
+  padding: 50px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.course-detail-content h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333; /* Adjust the color as per your preference */
+}
+
+.course-detail-content h3 {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #666; /* Adjust the color as per your preference */
+}
+.course-title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.teacher-info {
+  font-size: 18px;
+  color: #777;
+  margin-bottom: 20px;
+}
+.course-detail-content h4 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.course-detail-content p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.course-video {
+  margin-bottom: 30px;
+}
+
+.course-video iframe {
+  width: 100%;
+  height: 500px;
+  border: none;
+}
+
+.module-card {
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.module-card h5 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.module-card p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.course-detail-content button {
+  background-color: #ff9900;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.course-detail-content button:hover {
+  background-color: #ff6600;
+}

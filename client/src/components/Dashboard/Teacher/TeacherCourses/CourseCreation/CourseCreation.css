@@ -1,0 +1,31 @@
+.form-group {
+  margin-bottom: 20px;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.button {
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.course-creation-container {
+  width: 60%;
+  margin: 0 auto;
+  background-color: var(--primary-color);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}

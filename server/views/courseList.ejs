@@ -1,0 +1,15 @@
+<!-- courseList.ejs -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Course List</title>
+  </head>
+  <body>
+    <h1>Course List</h1>
+    <ul>
+      <% courses.forEach((course) => { %>
+      <li><a href="/course/<%= course._id %>"><%= course.title %></a></li>
+      <% }); %>
+    </ul>
+  </body>
+</html>
