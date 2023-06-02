@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema({
   name: {
@@ -13,21 +13,13 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-
-    userType: {
+  userType: {
     type: String,
+    enum: ["child", "teacher", "parent"], // Include 'parent' in the enum values
     required: true,
-  },
-
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-  updatedAt: {
-    type: Date,
-    default: Date.now,
   },
 });
 
-const UserModel = mongoose.model("users", UserSchema);
+const UserModel = mongoose.model("User", UserSchema);
+
 module.exports = UserModel;

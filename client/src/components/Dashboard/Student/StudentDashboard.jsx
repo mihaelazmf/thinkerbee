@@ -1,25 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { Outlet } from "react-router-dom";
+import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
-import axios from "axios";
 import "./StudentDashboard.css";
 
 const StudentDashboard = () => {
-  const [enrolledCourses, setEnrolledCourses] = useState([]);
-
-  useEffect(() => {
-    fetchEnrolledCourses();
-  }, []);
-
-  const fetchEnrolledCourses = async () => {
-    try {
-      const response = await axios.get("/courses/enrolled");
-      setEnrolledCourses(response.data);
-    } catch (error) {
-      console.error("Error fetching enrolled courses:", error);
-    }
-  };
-
   return (
     <Container className="student-dashboard">
       <h2 style={{ color: "#007bff", fontSize: "24px", marginBottom: "10px" }}>
@@ -31,14 +14,7 @@ const StudentDashboard = () => {
       <Row>
         <Col>
           <Card>
-            <Card.Body>
-              <Card.Title>Enrolled Courses</Card.Title>
-              <ul>
-                {enrolledCourses.map((course) => (
-                  <li key={course._id}>{course.name}</li>
-                ))}
-              </ul>
-            </Card.Body>
+            <Card.Body></Card.Body>
           </Card>
         </Col>
         <Col>
@@ -50,7 +26,6 @@ const StudentDashboard = () => {
           </Card>
         </Col>
       </Row>
-      <Outlet /> {/* Render nested routes */}
     </Container>
   );
 };

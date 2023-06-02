@@ -3,9 +3,25 @@ import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const STEMCourses = ({ createdCourse }) => {
+const STEMCourses = ({ createdCourse, setEnrolledCourses }) => {
   const [courses, setCourses] = useState([]);
+  const enrollCourse = (course) => {
+    // Perform the enrollment logic here
+    // For example, save the course information to the user's profile
 
+    // Get the current enrolled courses from localStorage (if any)
+    const enrolledCourses =
+      JSON.parse(localStorage.getItem("enrolledCourses")) || [];
+
+    // Add the new course to the enrolled courses array
+    enrolledCourses.push(course);
+
+    // Update the enrolled courses in localStorage
+    localStorage.setItem("enrolledCourses", JSON.stringify(enrolledCourses));
+
+    // Update the enrolled courses state in the parent component
+    setEnrolledCourses(enrolledCourses);
+  };
   useEffect(() => {
     const fetchCourses = async () => {
       try {
@@ -81,8 +97,11 @@ const STEMCourses = ({ createdCourse }) => {
                       )}
                     </>
                   )}
-                  {!course.description && <p>No description available.</p>}
-                  <Button variant="success" style={{ margin: "10px" }}>
+                  <Button
+                    variant="success"
+                    style={{ margin: "10px" }}
+                    onClick={() => enrollCourse(course)}
+                  >
                     Enroll Now
                   </Button>
                 </Card.Body>
