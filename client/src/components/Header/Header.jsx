@@ -59,6 +59,7 @@ function Header() {
           <Button
             href="/register"
             variant="outline-secondary"
+            className="me-2 mx-2"
             style={{ borderRadius: "20px" }}
           >
             {" "}
