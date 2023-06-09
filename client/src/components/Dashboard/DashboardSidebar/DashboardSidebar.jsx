@@ -30,19 +30,19 @@ const DashboardSidebar = () => {
         <Nav className="flex-column">
           {" "}
           {/* Add the flex-column class here */}
-          <Nav.Link as={Link} to="/dashboard" className="sidebar-link">
+          <Nav.Link as={Link} to="/dashboard/teacher" className="sidebar-link">
             <FontAwesomeIcon icon={faHome} className="sidebar-icon" />
             Dashboard
           </Nav.Link>
-          <Nav.Link as={Link} to="/account" className="sidebar-link">
+          <Nav.Link as={Link} to="#" className="sidebar-link">
             <FontAwesomeIcon icon={faUser} className="sidebar-icon" />
             Account
           </Nav.Link>
-          <Nav.Link as={Link} to="/dashboard/settings" className="sidebar-link">
+          <Nav.Link as={Link} to="#" className="sidebar-link">
             <FontAwesomeIcon icon={faCog} className="sidebar-icon" />
             Settings
           </Nav.Link>
-          <Nav.Link as={Link} to="/logout" className="sidebar-link">
+          <Nav.Link as={Link} to="#" className="sidebar-link">
             <FontAwesomeIcon icon={faSignOutAlt} className="sidebar-icon" />
             Logout
           </Nav.Link>

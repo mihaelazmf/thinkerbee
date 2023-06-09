@@ -17,7 +17,9 @@ function CoursesCardsHomepage() {
               Improve your math skills with our engaging and interactive
               courses!
             </Card.Text>
-            <Button variant="primary">Learn More</Button>
+            <Button href="/stemcourses" variant="primary">
+              Learn More
+            </Button>
           </Card.Body>
         </Card>
 
@@ -29,7 +31,9 @@ function CoursesCardsHomepage() {
               Discover the wonders of science with our hands-on courses and
               experiments!
             </Card.Text>
-            <Button variant="primary">Learn More</Button>
+            <Button href="/creativecourses" variant="primary">
+              Learn More
+            </Button>
           </Card.Body>
         </Card>
 
@@ -41,7 +45,9 @@ function CoursesCardsHomepage() {
               Learn a new language or improve your language skills with our
               immersive courses!
             </Card.Text>
-            <Button variant="primary">Learn More</Button>
+            <Button href="/languagescourses" variant="primary">
+              Learn More
+            </Button>
           </Card.Body>
         </Card>
       </CardGroup>
