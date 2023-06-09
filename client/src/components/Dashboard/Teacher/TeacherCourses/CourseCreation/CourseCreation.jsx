@@ -59,6 +59,24 @@ const CourseCreation = ({ onCourseCreate }) => {
     setCurrentModuleIndex(updatedModules.length - 1);
   };
 
+  const handleResetForm = () => {
+    setTitle("");
+    setDescription("");
+    setImage("");
+    setTeacher("");
+    setCategory("");
+    setModules([
+      {
+        title: "",
+        description: "",
+        video: "",
+      },
+    ]);
+    setCurrentModuleIndex(0);
+    setShowSuccessMessage(false);
+    setCreatedCourse(null);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -109,6 +127,8 @@ const CourseCreation = ({ onCourseCreate }) => {
       }
     } catch (error) {
       console.error("Failed to create course:", error);
+
+      handleResetForm();
     }
   };
 
@@ -182,7 +202,7 @@ const CourseCreation = ({ onCourseCreate }) => {
             type="text"
             id="module-title"
             name="title"
-            value={currentModule.title}
+            value={currentModule && currentModule.title}
             onChange={handleModuleChange}
             required
           />
@@ -192,7 +212,7 @@ const CourseCreation = ({ onCourseCreate }) => {
           <textarea
             id="module-description"
             name="description"
-            value={currentModule.description}
+            value={currentModule && currentModule.description}
             onChange={handleModuleChange}
             required
           ></textarea>
@@ -203,7 +223,7 @@ const CourseCreation = ({ onCourseCreate }) => {
             type="text"
             id="module-video"
             name="video"
-            value={currentModule.video}
+            value={currentModule && currentModule.video}
             onChange={handleModuleChange}
             required
           />
@@ -219,7 +239,7 @@ const CourseCreation = ({ onCourseCreate }) => {
         <div className="success-message">Course created successfully!</div>
       )}
       {/* Display the CourseList component with the createdCourse prop */}
-      {createdCourse && (
+      {createdCourse && currentModule && (
         <div>
           <h3>Created Course</h3>
           <Card className="course-card">
