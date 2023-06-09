@@ -38,7 +38,7 @@ const CourseList = () => {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div style={{ padding: "20px", marginBottom: "20px" }}>
       <h3>Course List</h3>
       {courses.length === 0 ? (
         <p>No courses available.</p>

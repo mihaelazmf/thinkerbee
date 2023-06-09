@@ -1,8 +1,8 @@
 const express = require("express");
 const { body, validationResult } = require("express-validator");
 const app = express();
+const userRoutes = require("./routes/userRoutes");
 //const path = require('path');
-
 // Import necessary modules and models
 const mongoose = require("mongoose");
 const UserModel = require("./models/users");
@@ -11,9 +11,12 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
 const nodemailer = require("nodemailer");
+const getUser = require("./middlewares/auth");
 
 app.use(express.json());
 app.use(cors());
+app.use(getUser);
+app.use("./models/users", userRoutes);
 
 // Connect to MongoDB
 mongoose.connect(
@@ -38,10 +41,13 @@ db.once("open", () => {
 app.post("/login", async (req, res) => {
   // Retrieve email and password from the request body
   const { email, password } = req.body;
+  console.log("Email:", email);
+  console.log("Password:", password);
 
   try {
     // Find the user by email
     const user = await UserModel.findOne({ email });
+    console.log("User:", user);
 
     if (!user) {
       return res.status(404).json({ error: "User not found" });
@@ -55,33 +61,33 @@ app.post("/login", async (req, res) => {
     }
 
     // Generate a JWT token for the authenticated user
-    const token = jwt.sign({ userId: user._id }, "your-secret-key");
+    const token = jwt.sign(
+      { userId: user._id, userType: user.userType },
+      "5T1xWOB4psqQFMfSUnyXTrRnOGMAvmCHoEbemsaVeWIfvvd4fJkVN3/6Tz4wo3DDzNgksu+SVKoS4cZv0pWwS2uyDjOtgSDCBYODz+rLfCI="
+    );
 
     // Determine the dashboard route based on the user type
     let dashboardRoute = "";
     if (user.userType === "child" || user.userType === "parent") {
-      dashboardRoute = "/dashboard/student";
+      dashboardRoute = "/homepage";
     } else if (user.userType === "teacher") {
       dashboardRoute = "/dashboard/teacher";
+    } else {
+      return res.status(400).json({ error: "Invalid user type" });
     }
-
+    console.log("Token:", token);
+    console.log("Dashboard Route:", dashboardRoute);
     // Return the token and dashboard route as the response
     res.json({ token, dashboardRoute });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
-
-// Registration routes
-app.get("/register", async (req, res) => {
-  try {
-    const users = await UserModel.find();
-    res.json(users);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
+app.get("/login", (req, res) => {
+  res.send("Login page"); // Replace this with the desired response or template rendering logic
 });
 
+// Registration route
 app.post("/register", async (req, res) => {
   // Retrieve user details from the request body
   const { name, email, password, userType } = req.body;
@@ -98,30 +104,40 @@ app.post("/register", async (req, res) => {
     }
 
     // Hash the password
-    const salt = bcrypt.genSaltSync(10);
-    const hashedPassword = bcrypt.hashSync(password, salt);
+    const saltRounds = 10;
+    bcrypt.hash(password, saltRounds, async (error, hashedPassword) => {
+      if (error) {
+        console.log("Error occurred during password hashing:", error);
+        return res.status(500).json({ error: "Failed to register user" });
+      }
 
-    // Create a new user
-    const newUser = new UserModel({
-      name,
-      email,
-      password: hashedPassword,
-      userType, // Save the user type
+      // Create a new user
+      const newUser = new UserModel({
+        name,
+        email,
+        password: hashedPassword,
+        userType,
+      });
+
+      // Save the new user to the database
+      await newUser.save();
+      console.log("User registered successfully:", newUser);
+
+      // Send confirmation email
+      const mailOptions = {
+        from: "thinkerbee.business@gmail.com",
+        to: email,
+        subject: "Registration Confirmation",
+        text: "Thank you for registering. Your account has been successfully created.",
+      };
+
+      await transporter.sendMail(mailOptions);
+      // Send a success message in the response
+      res.json({
+        message:
+          "Congratulations! Your account has been successfully created. Please check your email to verify your account.",
+      });
     });
-
-    // Save the new user to the database
-    await newUser.save();
-    console.log("User registered successfully:", newUser);
-    const mailOptions = {
-      from: "thinkerbee.business@gmail.com", // Replace with your Gmail email address
-      to: email,
-      subject: "Registration Confirmation",
-      text: "Thank you for registering. Your account has been successfully created.",
-    };
-
-    await transporter.sendMail(mailOptions);
-
-    res.json({ message: "User registered successfully" });
   } catch (error) {
     if (
       error.code === 11000 &&
@@ -139,24 +155,8 @@ app.post("/register", async (req, res) => {
     res.status(500).json({ error: "An error occurred during registration" });
   }
 });
-// Send confirmation email route
-app.post("/sendConfirmationemail", async (req, res) => {
-  const { email } = req.body;
-
-  const mailOptions = {
-    from: "thinkerbee.business@gmail.com", // Replace with your Gmail email address
-    to: email,
-    subject: "Registration Confirmation",
-    text: "Thank you for registering. Your account has been successfully created.",
-  };
-  try {
-    await transporter.sendMail(mailOptions);
-
-    res.json({ message: "Confirmation email sent successfully" });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Failed to send confirmation email" });
-  }
+app.get("/register", (req, res) => {
+  res.send("Register page"); // Replace this with the desired response or template rendering logic
 });
 // Course routes
 app.post("/courses", async (req, res) => {
@@ -315,6 +315,17 @@ app.post("/contactform", async (req, res) => {
     console.error(error);
     res.status(500).json({ message: "Failed to send email" });
   }
+});
+
+// Protected route example
+app.get("/protected", getUser, (req, res) => {
+  // Access the authenticated user
+  const user = req.user;
+
+  // Handle the protected route logic here
+  // ...
+
+  res.json({ message: "Protected route accessed successfully" });
 });
 
 // Start the server
