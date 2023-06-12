@@ -18,13 +18,13 @@ Installation
 
 To set up and run the ThinkerBee app, follow these steps:
 
-- Clone the repository from GitHub.
+- Clone the repository from GitHub:  https://github.com/mihaelazmf/thinkerbee.git.
 - Navigate to the project directory using the command line.
 - Install the required dependencies by running npm install in the root directory.
 - Set up the environment variables required for the app, such as MongoDB connection string, API keys, etc. Refer to the .env.example file provided.
 - Run the development server using npm run dev. This will start both the server-side and client-side concurrently.
 
-
+ 
 Project Structure
 
 The ThinkerBee app has a typical project structure that follows best practices and separation of concerns.
