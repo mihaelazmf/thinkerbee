@@ -44,3 +44,12 @@ To use and develop the ThinkerBee app, keep the following points in mind:
 - Utilize MongoDB  database as per your requirements by modifying the server-side code accordingly.
 
 Make use of the provided scripts in the package.json file to run, test, or build the app for production.
+
+<img width="668" alt="Screenshot 2023-06-08 at 11 44 57" src="https://github.com/mihaelazmf/thinkerbee/assets/52852589/a77c315a-5838-4197-9bde-4042956ebd49">
+<img width="1330" alt="Screenshot 2023-06-08 at 13 28 38" src="https://github.com/mihaelazmf/thinkerbee/assets/52852589/f0700bfc-3879-4747-95a7-6236c4f8d18c">
+<img width="1328" alt="Screenshot 2023-06-08 at 13 57 08" src="https://github.com/mihaelazmf/thinkerbee/assets/52852589/1b979486-5fcc-412c-b1a1-bd0080a1eda4">
+
+
+
+
+
