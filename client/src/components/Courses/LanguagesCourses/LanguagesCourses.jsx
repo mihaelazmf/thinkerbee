@@ -70,7 +70,11 @@ const LanguagesCourses = ({ createdCourse }) => {
                     </Link>
                   )}
                   {!course.description && <p>No description available.</p>}
-                  <Button variant="success" style={{ margin: "10px" }}>
+                  <Button
+                    variant="success"
+                    style={{ margin: "10px" }}
+                    href="/homepage"
+                  >
                     Enroll Now
                   </Button>
                 </Card.Body>
